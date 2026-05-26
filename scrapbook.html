@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memory Scrapbook ✨</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #f7f0eb; 
+            background-image: radial-gradient(#e1d7cf 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            color: #5c4d4d;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #8c7a7a;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* Responsive scrapbook grid */
+        .scrapbook-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
+            max-width: 1100px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .polaroid-container {
+            background: transparent;
+            width: 260px;
+            height: 330px;
+            perspective: 1000px; 
+            margin: 0 auto;
+        }
+
+        .polaroid-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            border-radius: 4px;
+        }
+
+        /* Smooth 3D Flip on hover & tap */
+        .polaroid-container:hover .polaroid-card {
+            transform: rotateY(180deg) scale(1.05);
+        }
+
+        .polaroid-front, .polaroid-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            background: white;
+            padding: 15px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: 1px solid #eaeaea;
+        }
+
+        .polaroid-front {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .polaroid-front img {
+            width: 230px;
+            height: 230px;
+            object-fit: cover;
+            border: 1px solid #f0f0f0;
+        }
+
+        .caption {
+            font-family: 'Georgia', serif;
+            color: #555;
+            margin-top: 15px;
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+
+        .polaroid-back {
+            background-color: #fffdf6; 
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .polaroid-back p {
+            color: #6e5a5a;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            margin: 0;
+        }
+
+        /* Adds a chaotic, organic scrapbook tilt to the frames */
+        .polaroid-container:nth-child(3n+1) .polaroid-card { transform: rotate(-2deg); }
+        .polaroid-container:nth-child(3n+2) .polaroid-card { transform: rotate(3deg); }
+        .polaroid-container:nth-child(3n+3) .polaroid-card { transform: rotate(-1.5deg); }
+        .polaroid-container:hover .polaroid-card { transform: rotateY(180deg) scale(1.05); }
+        /* Floating Music Player Button */
+        .music-player {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #ff9ebb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 8px 20px rgba(255, 158, 187, 0.4);
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .music-player:hover {
+            transform: scale(1.05) translateY(-3px);
+            background: #ff85a7;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Our Story Book ✨</h1>
+    <p class="subtitle">Hover or tap a picture to read the memory behind it...</p>
+
+    <div class="scrapbook-grid">
+
+        <div class="polaroid-container">
+            <div class="polaroid-card">
+                <div class="polaroid-front">
+                    <img src="photo4.JPG" alt="Memory 1">
+                    <div class="caption">RALPH-SWAY</div>
+                </div>
+                <div class="polaroid-back">
+                    <p>"Remember how soulful this swa-sway and ralph days were"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-card">
+                <div class="polaroid-front">
+                    <img src="photo5.JPG" alt="Memory 2">
+                    <div class="caption">Mwahh!</div>
+                </div>
+                <div class="polaroid-back">
+                    <p>"I miss this, how sweet they are and juicy, I am drooling"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-card">
+                <div class="polaroid-front">
+                    <img src="photo6.JPG" alt="Memory 3">
+                    <div class="caption">Before the shower</div>
+                </div>
+                <div class="polaroid-back">
+                    <p>"Ohh the showers, i washed you pretty clean, squeeky!"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-card">
+                <div class="polaroid-front">
+                    <img src="photo7.JPG" alt="Memory 4">
+                    <div class="caption">The top for me</div>
+                </div>
+                <div class="polaroid-back">
+                    <p>"I want to be the only one to look at you and feel you, I am jealous"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-card">
+                <div class="polaroid-front">
+                    <img src="photo8.JPG" alt="Memory 5">
+                    <div class="caption">Mee!</div>
+                </div>
+                <div class="polaroid-back">
+                    <p>"you like this pic?"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-card">
+                <div class="polaroid-front">
+                    <img src="photo9.PNG" alt="Memory 6">
+                    <div class="caption">US</div>
+                </div>
+                <div class="polaroid-back">
+                    <p>"Enjoying same movies makes me feel nice,and eating together"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-card">
+                <div class="polaroid-front">
+                    <img src="photo10.JPG" alt="Memory 6">
+                    <div class="caption">US again</div>
+                </div>
+                <div class="polaroid-back">
+                    <p>"wink wink cuty, I love youu"</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="music-player" id="musicBtn" onclick="toggleMusic()">
+        🎵 Play "Cinderella"
+    </div>
+
+    <div class="music-player" id="musicBtn" onclick="toggleMusic()">
+        🎵 Play "Cinderella"
+    </div>
+
+    <div class="music-player" id="musicBtn" onclick="toggleMusic()">
+        🎵 Play "Cinderella"
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="cinderella.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById("bgMusic");
+        const btn = document.getElementById("musicBtn");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                btn.innerHTML = "⏸️ Paused \"Cinderella\"";
+                btn.style.background = "#8c7a7a"; // Changes color when playing
+            } else {
+                music.pause();
+                btn.innerHTML = "🎵 Play \"Cinderella\"";
+                btn.style.background = "#ff9ebb";
+            }
+        }
+    </script>
+
+
+</body>
+</html>

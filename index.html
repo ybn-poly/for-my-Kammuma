@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message For You</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fceeed; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* Floating background items */
+        .sparkle {
+            position: absolute;
+            color: #ffb3c6;
+            font-size: 24px;
+            opacity: 0.5;
+            animation: float 5s ease-in-out infinite;
+            user-select: none;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(20deg); }
+        }
+
+        /* Main Card container with a smooth fade/scale animation */
+        .card {
+            background: #fff6f6; 
+            padding: 40px 30px;
+            border-radius: 30px; 
+            box-shadow: 0 20px 50px rgba(223, 168, 178, 0.2);
+            text-align: center;
+            width: 400px;
+            max-width: 90%;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            z-index: 2;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cat-gif {
+            width: 150px;
+            height: 150px;
+            border-radius: 28px; 
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            color: #482929;
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+        }
+
+        .paragraph {
+            color: #7a5c5c;
+            font-size: 0.98rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            position: relative;
+        }
+
+        button {
+            padding: 13px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px; 
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        #yesBtn {
+            background-color: #ff9ebb; 
+            color: white;
+            transition: transform 0.2s ease, background-color 0.2s;
+        }
+        #yesBtn:hover {
+            transform: scale(1.1);
+            background-color: #ff85a7;
+        }
+
+        #noBtn {
+            background-color: #e6daf1; 
+            color: #836d93;
+            position: absolute;
+            left: 230px; 
+            z-index: 10;
+        }
+
+        /* --- SUCCESS PAGE STYLING --- */
+        .hidden {
+            display: none;
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+        }
+
+        .reveal {
+            display: block !important;
+            animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes scaleIn {
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 2px solid white;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sparkle" style="top: 10%; left: 10%;">🌸</div>
+    <div class="sparkle" style="top: 15%; right: 12%; animation-delay: 1s;">✨</div>
+    <div class="sparkle" style="bottom: 20%; left: 15%; animation-delay: 2s;">💖</div>
+    <div class="sparkle" style="bottom: 12%; right: 10%; animation-delay: 1.5s;">🌸</div>
+
+    <div class="card" id="proposalCard">
+        <img class="cat-gif" id="mainImg" src="hands.jpg.JPG" alt="Hands">
+        
+        <h1>Hey Kammuma, Val ✨</h1> 
+        
+        <p class="paragraph">
+            I was just thinking about how incredibly lucky I am to have you in my life. You make every ordinary day feel special, and I’d love nothing more than to create some more beautiful memories together.
+        </p>
+        
+        <h1>Will you go on a date with me? 🌸</h1>
+        
+        <div class="btn-container">
+            <button id="yesBtn" onclick="celebrate()">YES 💕</button>
+            <button id="noBtn">no... 🙈</button>
+        </div>
+    </div>
+
+    <div class="card hidden" id="successCard">
+        <img class="cat-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmswN3A0eXhlbTF6YW96cmZpZms0ZXN0Z3d5Ym90bXN4cXp0bms3byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/c76IJLufpNwSULPk77/giphy.gif" alt="Celebration">
+        
+        <h1>It's a Date! 🥰🎉</h1>
+        <p class="paragraph" style="margin-bottom: 20px;">
+            Yay! You've officially made my week. I can't wait to spend time with my favorite person. Here's to us! ❤️
+        </p>
+
+        <div class="gallery">
+            <img src="photo1.jpg" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=300'" alt="Memory 1">
+            <img src="photo2.jpg" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300'" alt="Memory 2">
+            <img src="photo3.jpg" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=300'" alt="Memory 3">
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const proposalCard = document.getElementById('proposalCard');
+        const successCard = document.getElementById('successCard');
+
+        // Fleeing Button Code
+        function moveButton() {
+            const padding = 60;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // Dynamic Page Flipping Transition
+        function celebrate() {
+            // Smoothly slide out Page 1
+            proposalCard.style.opacity = '0';
+            proposalCard.style.transform = 'scale(0.9) translateY(-30px)';
+            
+            setTimeout(() => {
+                proposalCard.style.display = 'none';
+                // Smoothly fade/scale in Page 2
+                successCard.classList.add('reveal');
+            }, 400);
+        }
+    </script>
+
+</body>
+</html>
